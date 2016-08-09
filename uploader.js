@@ -7,7 +7,6 @@ $(document).ready(function() {
   $('.upload_form').append($.cloudinary.unsigned_upload_tag("wrpb3vol", { cloud_name: 'db9ciclox' }));
 
   var _timeStart;
-  var _totalTime = 0;
   var _totalFiles = 0;
   var _totalSize = 0;
 
@@ -16,19 +15,15 @@ $(document).ready(function() {
 
       console.log(data.files[0].name);
 
-      var timeEnd =  new Date().getTime();
-      var seconds = (timeEnd - _timeStart) / 1000;
       var fileSize = Math.round(data.files[0].size / 1000) / 1000;
-      _totalTime += seconds
       _totalFiles++;
       _totalSize += fileSize;
       $(".text").html("Status: DONE!");
-      $(".log").append("<div>Uploaded: " + data.files[0].name + " (" + fileSize + "MB) Time taken: " + seconds + " seconds.</div>");
-      $(".total").html("Total: " + _totalFiles + " files (" + Math.round(_totalSize * 1000) / 1000 + "MB) Time Taken: " + _totalTime + " seconds.");
+      $(".log").append("<div>Uploaded: " + data.files[0].name + " (" + fileSize + "MB)</div>");
+      $(".total").html("Total: " + _totalFiles + " files (" + Math.round(_totalSize * 1000) / 1000 + "MB)");
 
     }).bind('cloudinaryprogress', function(e, data) {
       $(".text").html("Status: UPLOADING...");
-      _timeStart = new Date().getTime();
     });
 
 });
