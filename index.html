@@ -17,14 +17,58 @@
 
   <script src='uploader.js' type='text/javascript'></script>
 
+  <style type='text/css'>
+    body, html {
+      font-family: Helvetica, Arial, 'sans-serif';
+    }
+    .hidden {
+      display: none;
+    }
+    .error-text {
+      font-size: 0.83em;
+      font-weight: bold;
+      color: #AA0000;
+      margin-bottom: 10px;
+    }
+    .download-log {
+      display: inline-block;
+      background-color: #EEE;
+      border: 1px solid #AAA;
+      color: #111;
+      padding: 2px 8px;
+      text-decoration: none;
+      border-radius: 1px;
+      font-size: 13px;
+    }
+  </style>
+
 </head>
 <body>
 
-  <form class="upload_form">
-
+  <form class="upload_form" style="margin: 20px 0;">
   </form>
-  <div class="log" style="margin: 20px 0;"></div>
-  <div class="text">WAITING</div>
-  <div class="total" style="margin: 20px 0;"></div>
+  <div class="holding">
+    <h5>waiting for files.</h5>
+  </div>
+  <div class="log hidden">
+    <a href="#" class="download-log" download="cloudinary-log.txt">Save Upload Log</a>
+  </div>
+  <div class="initialise hidden">
+    <h5>file transfers started: <span class="num-started"></span> files</h5>
+  </div>
+  <div class="in-progress hidden">
+    <h5>in progress:</h5>
+  </div>
+  <div class="complete hidden">
+    <h5>finished sending: <span class="num-sent"></span> files</h5>
+    <div class="complete-items"></div>
+  </div>
+  <div class="received hidden">
+    <h5>received:  <span class="num-received"></span> files</h5>
+  </div>
+  <div class="failed hidden">
+    <h5>failed: <span class="num-failed"></span> files</h5>
+  </div>
+
 </body>
 </html>
